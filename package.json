@@ -1,0 +1,56 @@
+{
+  "name": "@vibestartup/sdk-runtime",
+  "version": "0.1.0",
+  "description": "protocol + transports + compile() for declarative vibestartup SDKs",
+  "license": "MIT",
+  "repository": { "type": "git", "url": "git+https://github.com/vibestartup/sdk-runtime.git" },
+  "type": "module",
+  "main": "./src/index.ts",
+  "module": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./primitives": "./src/primitives.ts",
+    "./compile": "./src/compile.ts",
+    "./transport/direct": "./src/transport/direct.ts",
+    "./transport/worker": "./src/transport/worker.ts",
+    "./transport/node": "./src/transport/node.ts"
+  },
+  "publishConfig": {
+    "main": "./dist/index.js",
+    "module": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "exports": {
+      ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js" },
+      "./primitives": { "types": "./dist/primitives.d.ts", "import": "./dist/primitives.js" },
+      "./compile": { "types": "./dist/compile.d.ts", "import": "./dist/compile.js" },
+      "./transport/direct": { "types": "./dist/transport/direct.d.ts", "import": "./dist/transport/direct.js" },
+      "./transport/worker": { "types": "./dist/transport/worker.d.ts", "import": "./dist/transport/worker.js" },
+      "./transport/node": { "types": "./dist/transport/node.d.ts", "import": "./dist/transport/node.js" }
+    }
+  },
+  "files": ["dist", "src", "README.md"],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@vibestartup/thing": "workspace:*",
+    "zustand": "^5.0.0"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0 || ^19.0.0",
+    "react-dom": "^18.2.0 || ^19.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.0",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0",
+    "tsup": "^8.3.0",
+    "typescript": "^5.6.0",
+    "vitest": "^2.1.0"
+  }
+}
